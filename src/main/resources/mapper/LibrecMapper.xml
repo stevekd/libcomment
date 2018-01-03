@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bbtree.librec.core.dao.LibrecMapper" >
+  <resultMap id="BaseResultMap" type="com.bbtree.librec.core.model.Librec" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="question_id" property="questionId" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="imgs" property="imgs" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_expert_name" property="userExpertName" jdbcType="VARCHAR" />
+    <result column="user_baby" property="userBaby" jdbcType="VARCHAR" />
+    <result column="agree_num" property="agreeNum" jdbcType="INTEGER" />
+    <result column="useless_num" property="uselessNum" jdbcType="INTEGER" />
+    <result column="user_headimg" property="userHeadimg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, question_id, content, imgs, create_time, user_id, user_name, user_expert_name, 
+    user_baby, agree_num, useless_num, user_headimg
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from demo_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from demo_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.bbtree.librec.core.model.Librec" >
+    insert into demo_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="questionId != null" >
+        question_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="imgs != null" >
+        imgs,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userExpertName != null" >
+        user_expert_name,
+      </if>
+      <if test="userBaby != null" >
+        user_baby,
+      </if>
+      <if test="agreeNum != null" >
+        agree_num,
+      </if>
+      <if test="uselessNum != null" >
+        useless_num,
+      </if>
+      <if test="userHeadimg != null" >
+        user_headimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="questionId != null" >
+        #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null" >
+        #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userExpertName != null" >
+        #{userExpertName,jdbcType=VARCHAR},
+      </if>
+      <if test="userBaby != null" >
+        #{userBaby,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeNum != null" >
+        #{agreeNum,jdbcType=INTEGER},
+      </if>
+      <if test="uselessNum != null" >
+        #{uselessNum,jdbcType=INTEGER},
+      </if>
+      <if test="userHeadimg != null" >
+        #{userHeadimg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.bbtree.librec.core.model.Librec" >
+    update demo_talbe
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="questionId != null" >
+        question_id = #{questionId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null" >
+        imgs = #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userExpertName != null" >
+        user_expert_name = #{userExpertName,jdbcType=VARCHAR},
+      </if>
+      <if test="userBaby != null" >
+        user_baby = #{userBaby,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeNum != null" >
+        agree_num = #{agreeNum,jdbcType=INTEGER},
+      </if>
+      <if test="uselessNum != null" >
+        useless_num = #{uselessNum,jdbcType=INTEGER},
+      </if>
+      <if test="userHeadimg != null" >
+        user_headimg = #{userHeadimg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+
+<select id="queryPage" resultMap="BaseResultMap" parameterType="com.bbtree.librec.core.model.Librec" >
+    select 
+    <include refid="Base_Column_List" />
+    from demo_talbe
+    </select>
+   
+   <select id="getAnswers" resultType="java.lang.Integer"  parameterType="com.bbtree.librec.core.model.Librec" >
+    select count(*) from demo_talbe where question_id = #{questionId,jdbcType=INTEGER}
+    </select> 
+</mapper>

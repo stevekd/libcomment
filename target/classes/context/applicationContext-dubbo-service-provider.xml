@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+           http://code.alibabatech.com/schema/dubbo    http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       ">
+
+	<dubbo:application name="${bbtree.dubbo.appname}" />
+	<dubbo:registry protocol="${bbtree.dubbo.registry.protocol}"
+		address="${bbtree.dubbo.registry.address}" file="${bbtree.dubbo.registry.file}" group="${bbtree_env}"/>
+	<dubbo:protocol name="${bbtree.dubbo.protocol}"  port="${bbtree.dubbo.protocol.port}" />
+	<dubbo:provider timeout="${bbtree.dubbo.provider.timeout}" retries="${bbtree.dubbo.provider.retries}" 
+		threads="${bbtree.dubbo.provider.threads}"  accepts="${bbtree.dubbo.provider.accepts}"/>
+	<dubbo:consumer loadbalance="${bbtree.dubbo.consumer.loadbalance}" filter="${bbtree.dubbo.consumer.filter}" retries="${bbtree.dubbo.consumer.retries}" check="${bbtree.dubbo.consumer.check}"/>
+	<dubbo:annotation package="com.bbtree" />	
+</beans>
+
